@@ -1,0 +1,23 @@
+--- Caminhos da resolucao manual ---
+P1: 0->1->3->5       gargalo = 12 | fluxo acumulado = 12
+P2: 0->2->4->5       gargalo =  4 | fluxo acumulado = 16
+P3: 0->2->4->3->5    gargalo =  7 | fluxo acumulado = 23
+Ainda existe caminho aumentante? NAO
+Corte minimo: S = {0,1,2,4} | T = {3,5}
+
+Aresta   c      f      c_f
+0->1     16     12     4
+0->2     13     11     2
+1->2     10     0      10
+1->3     12     12     0
+2->1     4      0      4
+2->4     14     11     3
+3->2     9      0      9
+3->5     20     19     1
+4->3     7      7      0
+4->5     4      4      0
+
+Fluxo maximo (ford_fulkerson do material): 23
+Fluxo maximo (maxflow nativo): 23
+Corte (maxflow nativo): S = {0,1,2,4} | T = {3,5}
+Confere com a resolucao manual (23): SIM

@@ -56,7 +56,7 @@ fprintf('\nFluxo maximo (ford_fulkerson do material): %g\n', fluxoMax);
 G = digraph(C, nomes);
 [mf, GF, cs, ct] = maxflow(G, '0', '5');
 fprintf('Fluxo maximo (maxflow nativo): %g\n', mf);
-fprintf('Corte (maxflow nativo): S = {%s} | T = {%s}\n', strjoin(nomes(cs(:)'),','), strjoin(nomes(ct(:)'),','));
+fprintf('Corte (maxflow nativo): S = {%s} | T = {%s}\n',strjoin(cs(:)', ','), strjoin(ct(:)', ','));
 fprintf('Confere com a resolucao manual (23): %s\n', simnao(total == 23 && fluxoMax == 23 && mf == 23));
 
 %% Figura: capacidades + fluxo da resolucao manual

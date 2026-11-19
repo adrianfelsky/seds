@@ -1,0 +1,15 @@
+Passo | Aresta | Peso | Decisao
+    1 | (A,E)  |    1 | Aceita
+    2 | (A,B)  |    2 | Aceita
+    3 | (B,C)  |    3 | Aceita
+    4 | (C,E)  |    3 | Rejeitada (ciclo)
+    5 | (D,E)  |    4 | Aceita
+    6 | (E,F)  |    4 | Aceita
+    7 | (A,D)  |    5 | Rejeitada (ciclo)
+    8 | (B,E)  |    7 | Rejeitada (ciclo)
+    9 | (C,F)  |    9 | Rejeitada (ciclo)
+
+Arestas da AGM: (A,E) (A,B) (B,C) (D,E) (E,F) 
+Peso total: 14
+Peso total (minspantree sparse nativo): 14
+Confere com a resolucao manual (14): SIM
