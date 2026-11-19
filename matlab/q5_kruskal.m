@@ -1,9 +1,3 @@
-% q5_kruskal.m - Validacao da 5a Questao (Kruskal)
-% Algoritmo: Kruskal com Union-Find conforme pseudocodigo do material (1.pdf)
-%            + minspantree nativo (Method 'sparse' = Kruskal), como no Lab. 01.
-% Rotulos: A (sup. esq.), B (sup. centro), C (sup. dir.),
-%          D (inf. esq.), E (base), F (inf. dir.)
-% Requer MATLAB R2016b ou superior.
 clear; close all; clc;
 if ~exist('../figs','dir'), mkdir('../figs'); end
 if ~exist('../out','dir'),  mkdir('../out');  end
@@ -22,7 +16,7 @@ for e = 1:size(arestas,1)
 end
 W = W + W';
 
-%% Kruskal (pseudocodigo do material, com impressao das decisoes)
+%% Kruskal 
 [ag, pesoTotal] = kruskal_tab(W, nomes);
 fprintf('\nArestas da AGM: ');
 par = [nomes(ag(:,1)); nomes(ag(:,2))];
@@ -35,7 +29,7 @@ T = minspantree(G, 'Method', 'sparse');
 fprintf('Peso total (minspantree sparse nativo): %g\n', sum(T.Edges.Weight));
 fprintf('Confere com a resolucao manual (14): %s\n', simnao(pesoTotal == 14 && sum(T.Edges.Weight) == 14));
 
-%% Figura (posicoes semelhantes ao desenho da prova)
+%% Figura 
 X = [1.5 3.0 4.3 1.2 2.8 4.1];
 Y = [3.0 3.2 3.0 1.5 1.0 1.5];
 figure('Name','Q5 - Kruskal','Color','w');
@@ -48,7 +42,6 @@ diary off;
 
 %% ===================== FUNCOES =====================
 function [A, pesoTotal] = kruskal_tab(W, nomes)
-    % Kruskal(G): ordena arestas por peso e usa Union-Find para evitar ciclos
     n = size(W, 1);
     [u, v] = find(triu(W));
     w = W(sub2ind(size(W), u, v));

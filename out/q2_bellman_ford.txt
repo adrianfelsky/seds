@@ -8,7 +8,7 @@ Passada | A       B       C       D       E       F       G
       6 | 0(-)    -1(F)   -3(E)   0(G)    0(B)    3(A)    1(C)    
 Passada 7 (verificacao): houve reducao? NAO
 
---- Resultado final (bellman_ford do material) ---
+--- Resultado final ---
 No     Custo  Anterior   Caminho
 A      0      --         A
 B      -1     F          A -> F -> B

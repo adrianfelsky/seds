@@ -17,7 +17,7 @@ Aresta   c      f      c_f
 4->3     7      7      0
 4->5     4      4      0
 
-Fluxo maximo (ford_fulkerson do material): 23
+Fluxo maximo: 23
 Fluxo maximo (maxflow nativo): 23
 Corte (maxflow nativo): S = {0,1,2,4} | T = {3,5}
 Confere com a resolucao manual (23): SIM

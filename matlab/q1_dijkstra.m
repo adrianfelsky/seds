@@ -1,7 +1,3 @@
-% q1_dijkstra.m - Validacao da 1a Questao (Dijkstra, origem 0)
-% Algoritmo: dijkstra() do material "algoritmos em MATLAB para Grafos"
-%            + shortestpathtree/distances nativos do MATLAB (Lab. 01).
-% Requer MATLAB R2016b ou superior (funcoes locais no final do script).
 clear; close all; clc;
 if ~exist('../figs','dir'), mkdir('../figs'); end
 if ~exist('../out','dir'),  mkdir('../out');  end
@@ -9,7 +5,6 @@ arqOut = '../out/q1_dijkstra.txt';
 if exist(arqOut,'file'), delete(arqOut); end
 diary(arqOut);
 
-%% Grafo (vertice k da prova = indice k+1 no MATLAB)
 nomes = {'0' '1' '2' '3' '4' '5'};
 W = zeros(6);
 W(1,3) = 20;  W(1,4) = 40;  W(1,5) = 30;   % 0->2, 0->3, 0->4
@@ -17,9 +12,8 @@ W(2,3) = 10;                               % 1->2
 W(3,5) = 15;                               % 2->4
 W(4,5) = 10;  W(4,6) = 80;                 % 3->4, 3->5
 W(5,2) = 82;  W(5,6) = 20;                 % 4->1, 4->5
-% Aresta 5->1 sem peso na legenda: nao incluida.
 
-%% Dijkstra (implementacao do material, com impressao das iteracoes)
+%% Dijkstra
 [dist, pred] = dijkstra_tab(W, 1, nomes);
 
 fprintf('\n--- Resultado final (origem 0) ---\n');
@@ -49,7 +43,6 @@ diary off;
 
 %% ===================== FUNCOES =====================
 function [dist, pred] = dijkstra_tab(W, s, nomes)
-    % dijkstra() do material + impressao da tabela de evolucao
     n = size(W, 1);
     dist = inf(1, n);  pred = zeros(1, n);  visitado = false(1, n);
     dist(s) = 0;

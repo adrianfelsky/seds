@@ -1,7 +1,3 @@
-% q3_prim.m - Validacao da 3a Questao (Prim, inicio em A)
-% Algoritmo: prim() do material "algoritmos em MATLAB para Grafos"
-%            + minspantree nativo (Method 'dense' = Prim), como no Lab. 01.
-% Requer MATLAB R2016b ou superior.
 clear; close all; clc;
 if ~exist('../figs','dir'), mkdir('../figs'); end
 if ~exist('../out','dir'),  mkdir('../out');  end
@@ -21,7 +17,7 @@ for e = 1:size(arestas,1)
 end
 P = P + P';
 
-%% Prim (implementacao do material, com impressao dos passos)
+%% Prim 
 [ag, pesoTotal] = prim_tab(P, 1, nomes);
 fprintf('\n--- AGM (ordem de inclusao) ---\n');
 for k = 1:size(ag,1)
@@ -46,7 +42,6 @@ diary off;
 
 %% ===================== FUNCOES =====================
 function [arestas, pesoTotal] = prim_tab(W, inicio, nomes)
-    % prim() do material + impressao de chave/pai a cada passo
     n = size(W, 1);
     naArvore = false(1, n);  custo = inf(1, n);  pai = zeros(1, n);
     custo(inicio) = 0;  arestas = zeros(0, 2);  pesoTotal = 0;

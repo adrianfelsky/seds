@@ -34,8 +34,7 @@
     
 \newcommand{\codigomatlab}[1]{\par%
     \IfFileExists{matlab/#1.m}% 
-    {\lstinputlisting[style=matlab, title={Código MATLAB: 
-        \texttt{\detokenize{matlab/#1.m}}}]{matlab/#1.m}}% 
+    {\lstinputlisting[style=matlab]{matlab/#1.m}}% 
         {\noindent\fbox{\parbox[c][2.5cm][c]{0.97\textwidth}{\centering\color{gray}% 
         Espaço reservado: \texttt{\detokenize{matlab/#1.m}}}}}}
 
@@ -81,10 +80,9 @@
 % ============================================================================
 % 1ª QUESTÃO - DIJKSTRA
 % ============================================================================
-\section*{1ª Questão: Dijkstra (origem $0$)}
+\section*{1ª Questão: Dijkstra}
 
-\textbf{Arestas:} $0\!\to\!2=20$, $0\!\to\!3=40$, $0\!\to\!4=30$, $1\!\to\!2=10$, $2\!\to\!4=15$, $3\!\to\!4=10$, $3\!\to\!5=80$, $4\!\to\!1=82$, $4\!\to\!5=20$.\\
-(Aresta $5\to1$ sem peso na legenda: não considerada.)
+\textbf{Arestas:} $0\!\to\!2=20$, $0\!\to\!3=40$, $0\!\to\!4=30$, $1\!\to\!2=10$, $2\!\to\!4=15$, $3\!\to\!4=10$, $3\!\to\!5=80$, $4\!\to\!1=82$, $4\!\to\!5=20$.
 
 \subsection*{Execução}
 \begin{center}
@@ -103,7 +101,6 @@ Início & -- & $0$ (--) & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ \
 \end{tabular}
 \smallskip
 
-{\footnotesize Formato: distância (antecessor). Em negrito: vértice fechado na iteração.}
 \end{center}
 
 \subsection*{Resposta}
@@ -124,7 +121,7 @@ $5$ & $50$ & $4$ & $0 \to 4 \to 5$ \\
 
 \subsection*{Validação experimental (MATLAB)}
 \codigomatlab{q1_dijkstra}
-\figmatlab{q1_dijkstra}{Q1 — Árvore de caminhos mínimos a partir de $0$ (MATLAB).}
+\figmatlab{q1_dijkstra}{Q1 — Árvore de caminhos mínimos a partir de $0$.}
 \saidamatlab{q1_dijkstra}
 
 \newpage
@@ -153,7 +150,6 @@ $5$ & $50$ & $4$ & $0 \to 4 \to 5$ \\
 \end{tabular}
 \smallskip
 
-{\footnotesize Passada $k$: relaxamento usando os valores da passada $k-1$. Formato: custo (anterior).}
 \end{center}
 
 \noindent\textbf{7ª passada (verificação):} nenhuma distância diminui $\Rightarrow$ não há ciclo negativo.
@@ -175,9 +171,9 @@ $G$ & $1$ & $C$ & $A \to F \to B \to E \to C \to G$ \\
 \end{tabular}
 \end{center}
 
-\subsection*{Validação experimental (MATLAB)}
+\subsection*{Validação experimental}
 \codigomatlab{q2_bellman_ford}
-\figmatlab{q2_bellman_ford}{Q2 — Árvore de caminhos mínimos a partir de $A$ (MATLAB).}
+\figmatlab{q2_bellman_ford}{Q2 — Árvore de caminhos mínimos a partir de $A$.}
 \saidamatlab{q2_bellman_ford}
 
 \newpage
@@ -207,7 +203,6 @@ Início & -- & $0$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\in
 \end{tabular}
 \smallskip
 
-{\footnotesize Formato: chave (pai). Em negrito: vértice incluído na árvore no passo.}
 \end{center}
 
 \subsection*{Resposta}
@@ -228,9 +223,9 @@ Início & -- & $0$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\in
 \end{tabular}
 \end{center}
 
-\subsection*{Validação experimental (MATLAB)}
+\subsection*{Validação experimental}
 \codigomatlab{q3_prim}
-\figmatlab{q3_prim}{Q3 — Árvore Geradora Mínima por Prim (MATLAB).}
+\figmatlab{q3_prim}{Q3 — Árvore Geradora Mínima por Prim.}
 \saidamatlab{q3_prim}
 
 \newpage
@@ -279,9 +274,9 @@ $4 \to 5$ & $4$ & $4$ & $0$ (saturada) \\
 \end{tabular}
 \end{center}
 
-\subsection*{Validação experimental (MATLAB)}
+\subsection*{Validação experimental}
 \codigomatlab{q4_ford_fulkerson}
-\figmatlab{q4_ford_fulkerson}{Q4 — Fluxo/capacidade em cada aresta e corte mínimo (MATLAB).}
+\figmatlab{q4_ford_fulkerson}{Q4 — Fluxo/capacidade em cada aresta e corte mínimo.}
 \saidamatlab{q4_ford_fulkerson}
 
 \newpage
@@ -294,7 +289,7 @@ $4 \to 5$ & $4$ & $4$ & $0$ (saturada) \\
 \textbf{Rótulos:} $A$ (sup. esq.), $B$ (sup. centro), $C$ (sup. dir.), $D$ (inf. esq.), $E$ (base), $F$ (inf. dir.).\\
 \textbf{Arestas:} $AB=2$, $BC=3$, $AD=5$, $AE=1$, $BE=7$, $CE=3$, $CF=9$, $DE=4$, $EF=4$.
 
-\subsection*{Execução (arestas em ordem crescente de peso)}
+\subsection*{Execução}
 \begin{center}
 \begin{tabular}{ccccl}
 \toprule
@@ -320,9 +315,9 @@ Início & -- & -- & -- & $\{A\},\{B\},\{C\},\{D\},\{E\},\{F\}$ \\
     \item \textbf{Peso total:} $1 + 2 + 3 + 4 + 4 = \mathbf{14}$
 \end{itemize}
 
-\subsection*{Validação experimental (MATLAB)}
+\subsection*{Validação experimental}
 \codigomatlab{q5_kruskal}
-\figmatlab{q5_kruskal}{Q5 — Árvore Geradora Mínima por Kruskal (MATLAB).}
+\figmatlab{q5_kruskal}{Q5 — Árvore Geradora Mínima por Kruskal.}
 \saidamatlab{q5_kruskal}
 
 \end{document}

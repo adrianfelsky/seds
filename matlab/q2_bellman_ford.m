@@ -1,7 +1,3 @@
-% q2_bellman_ford.m - Validacao da 2a Questao (Bellman-Ford, origem A)
-% Algoritmo: bellman_ford() do material "algoritmos em MATLAB para Grafos"
-%            + versao por passadas (tabela k) + distances 'mixed' nativo.
-% Requer MATLAB R2016b ou superior.
 clear; close all; clc;
 if ~exist('../figs','dir'), mkdir('../figs'); end
 if ~exist('../out','dir'),  mkdir('../out');  end
@@ -21,12 +17,12 @@ for e = 1:size(arestas,1)
     W(L == arestas{e,1}, L == arestas{e,2}) = arestas{e,3};
 end
 
-%% 1) Tabela por passadas (dist da passada k usa os valores da passada k-1)
+%% Tabela por passadas
 bellman_ford_tab(W, 1, nomes);
 
-%% 2) Implementacao do material
+%% Bellman-Ford
 [dist, pred, cicloNeg] = bellman_ford(W, 1);
-fprintf('\n--- Resultado final (bellman_ford do material) ---\n');
+fprintf('\n--- Resultado final ---\n');
 fprintf('%-6s %-6s %-10s %s\n','No','Custo','Anterior','Caminho');
 for v = 1:7
     p = caminho(pred, 1, v);
@@ -35,7 +31,7 @@ for v = 1:7
 end
 fprintf('Ciclo negativo alcancavel: %s\n', simnao(cicloNeg));
 
-%% 3) Funcao nativa (metodo 'mixed' aceita pesos negativos)
+%% Funcao nativa
 G = digraph(W, nomes);
 dNat = distances(G, 'A', 'Method', 'mixed');
 fprintf('\nDistancias (distances mixed nativo): %s\n', mat2str(dNat));
@@ -54,7 +50,6 @@ diary off;
 
 %% ===================== FUNCOES =====================
 function bellman_ford_tab(W, s, nomes)
-    % Relaxamento por passadas: passada k = caminhos com ate k arestas
     n = size(W, 1);
     [I, J] = find(W);
     peso = W(sub2ind(size(W), I, J));
@@ -90,7 +85,6 @@ function imprime(k, dist, pred, nomes)
 end
 
 function [dist, pred, cicloNeg] = bellman_ford(W, s)
-    % Menores caminhos com pesos possivelmente negativos. O(V*E).
     n = size(W, 1);
     [I, J] = find(W);
     peso = W(sub2ind(size(W), I, J));
